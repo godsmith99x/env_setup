@@ -100,12 +100,14 @@
       owner: "{{user_name}}"
       group: "{{user_name}}"
 
-  - name: Copy init.vim file
+  - name: Copy nvim conf files
     copy:
-      src: files/init.vim
-      dest: /home/{{user_name}}/.config/nvim/init.vim
+      src: "{{item}}"
+      dest: /home/{{user_name}}/.config/nvim/
       owner: "{{user_name}}"
       group: "{{user_name}}"
+    with_fileglob:
+      - files/nvim/*
 
   - name: Copy bashrc file
     copy:
