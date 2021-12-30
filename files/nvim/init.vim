@@ -91,6 +91,11 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'rust-lang/rust.vim'
 call plug#end()
 
+" Install Termdebug
+packadd termdebug
+au BufNewFile, BufRead *.rs
+    \ let termdebugger="rust-gdb"
+
 " Plugin specific settings
 " ----------------
 
