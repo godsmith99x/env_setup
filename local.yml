@@ -1,0 +1,233 @@
+---
+#    ___             _                  _  _    _     
+#   / _ \  ___    __| | ___  _ __ ___  (_)| |_ | |__  
+#  / /_\/ / _ \  / _` |/ __|| '_ ` _ \ | || __|| '_ \ 
+# / /_\\ | (_) || (_| |\__ \| | | | | || || |_ | | | |
+# \____/  \___/  \__,_||___/|_| |_| |_||_| \__||_| |_|
+#
+
+
+
+- hosts: localhost
+  connection: local
+  become: true
+  vars:
+    user_name: "godsmith"
+
+  tasks:
+  - name: Update all packages to their latest version
+    dnf:
+      name: "*"
+      state: latest
+
+  - name: Install packages
+    dnf: 
+      pkg: 
+        - neovim
+        - tree
+        - gnome-tweaks
+        - zsh
+        - autojump
+        - deja-dup
+        - nodejs
+        - npm
+        - yamllint
+        - clang-tools-extra
+        - docker-compose
+        - python3-pip 
+        - util-linux-user
+        - gnome-shell-extension-pop-shell
+        - clang
+        - clang-tools-extra
+        - python3-ansible-lint
+        - neofetch
+        - kitty
+
+  - name: Remove useless packages from the cache
+    dnf:
+      autoremove: yes
+
+  - name: Create .fonts directory
+    file: 
+      path: /home/{{user_name}}/.fonts
+      state: directory
+      owner: "{{user_name}}"
+      group: "{{user_name}}"
+
+  - name: Copy font files
+    copy:
+      src: "{{item}}"
+      dest: /home/{{user_name}}/.fonts/
+      owner: "{{user_name}}"
+      group: "{{user_name}}"
+    with_fileglob:
+      - files/fonts/*
+
+  - name: Create kitty conf directory
+    file: 
+      path: /home/{{user_name}}/.config/kitty/
+      state: directory
+      owner: "{{user_name}}"
+      group: "{{user_name}}"
+
+  - name: Copy kitty conf files
+    copy:
+      src: "{{item}}"
+      dest: /home/{{user_name}}/.config/kitty/
+      owner: "{{user_name}}"
+      group: "{{user_name}}"
+    with_fileglob:
+      - files/kitty/*
+
+  - name: Create .local/share/nvim/site/autoload directory
+    file: 
+      path: /home/{{user_name}}/.local/share/nvim/site/autoload
+      state: directory
+      owner: "{{user_name}}"
+      group: "{{user_name}}"
+
+  - name: Download vim-plug package manager 
+    become: true
+    become_user: "{{user_name}}"
+    get_url: 
+      url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+      dest: /home/{{user_name}}/.local/share/nvim/site/autoload/plug.vim
+
+  - name: Create .config/nvim directory
+    file: 
+      path: /home/{{user_name}}/.config/nvim
+      state: directory
+      owner: "{{user_name}}"
+      group: "{{user_name}}"
+
+  - name: Copy init.vim file
+    copy:
+      src: files/init.vim
+      dest: /home/{{user_name}}/.config/nvim/init.vim
+      owner: "{{user_name}}"
+      group: "{{user_name}}"
+
+  - name: Copy bashrc file
+    copy:
+      src: files/bashrc
+      dest: /home/{{user_name}}/.bashrc
+      owner: "{{user_name}}"
+      group: "{{user_name}}"
+
+  - name: Run gsettings.sh 
+    become: true
+    become_user: "{{user_name}}"
+    command: /home/{{user_name}}/env_setup/gsettings.sh
+
+  - name: Run dnf_conf.sh 
+    become: true
+    command: /home/{{user_name}}/env_setup/dnf_conf.sh
+
+  - name: Create .oh-my-zsh_install directory
+    file: 
+      path: /home/{{user_name}}/.oh-my-zsh_install
+      state: directory
+      owner: "{{user_name}}"
+      group: "{{user_name}}"
+
+  - name: Download oh-my-zsh install.sh
+    become: true
+    become_user: "{{user_name}}"
+    get_url: 
+      url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh 
+      dest: /home/{{user_name}}/.oh-my-zsh_install/
+
+  - name: Make oh-my-zsh install.sh executable
+    become: true
+    command: chmod 751 /home/{{user_name}}/.oh-my-zsh_install/install.sh 
+
+  - name: Install oh-my-zsh
+    become: true
+    become_user: "{{user_name}}"
+    command: /home/{{user_name}}/.oh-my-zsh_install/install.sh --unattended
+
+  - name: Copy zshrc file
+    copy:
+      src: files/zshrc
+      dest: /home/{{user_name}}/.zshrc
+      owner: "{{user_name}}"
+      group: "{{user_name}}"
+
+  - name: Create .oh-my-zsh/custom/plugins/zsh-autosuggestions directory
+    file: 
+      path: /home/{{user_name}}/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+      state: directory
+      owner: "{{user_name}}"
+      group: "{{user_name}}"
+
+  - name: Clone zsh-autosuggestion git repo
+    become: true
+    become_user: "{{user_name}}"
+    ansible.builtin.git:
+      repo: "https://github.com/zsh-users/zsh-autosuggestions"
+      dest: "/home/{{user_name}}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+
+  - name: Create .oh-my-zsh/custom/plugins/zsh-completions directory
+    file: 
+      path: /home/{{user_name}}/.oh-my-zsh/custom/plugins/zsh-completions
+      state: directory
+      owner: "{{user_name}}"
+      group: "{{user_name}}"
+
+  - name: Clone zsh-completions git repo
+    become: true
+    become_user: "{{user_name}}"
+    ansible.builtin.git:
+      repo: "https://github.com/zsh-users/zsh-completions"
+      dest: "/home/{{user_name}}/.oh-my-zsh/custom/plugins/zsh-completions"
+
+  - name: Create .oh-my-zsh/custom/plugins/zsh-syntax-highlighting directory
+    file: 
+      path: /home/{{user_name}}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+      state: directory
+      owner: "{{user_name}}"
+      group: "{{user_name}}"
+
+  - name: Clone zsh-syntax-highlighting git repo
+    become: true
+    become_user: "{{user_name}}"
+    ansible.builtin.git:
+      repo: "https://github.com/zsh-users/zsh-syntax-highlighting"
+      dest: "/home/{{user_name}}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+
+  - name: Clone almostontop git repo
+    become: true
+    become_user: "{{user_name}}"
+    ansible.builtin.git:
+      repo: "https://github.com/Valiev/almostontop.git"
+      dest: "/home/{{user_name}}/.oh-my-zsh/custom/plugins/almostontop"
+
+  - name: Clone zsh-autocomplete git repo
+    become: true
+    become_user: "{{user_name}}"
+    ansible.builtin.git:
+      repo: "https://github.com/marlonrichert/zsh-autocomplete.git"
+      dest: "/home/{{user_name}}/.oh-my-zsh/custom/plugins/zsh-autocomplete"
+
+  - name: Change to zsh shell
+    command: chsh -s $(which zsh)
+
+  - name: Install yarn
+    command: npm install --global yarn
+
+  - name: Install rustup
+    command: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+  - name: Create .local/bin directory
+    file: 
+      path: /home/{{user_name}}/.local/bin
+      state: directory
+      owner: "{{user_name}}"
+      group: "{{user_name}}"
+
+  - name: Install rust-analyzer
+    command: curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-linux -o ~/.local/bin/rust-analyzer
+    
+  - name: Make rust-analyzer executable
+    become: true
+    command: chmod 751 /home/{{user_name}}/.local/bin/rust-analyzer
