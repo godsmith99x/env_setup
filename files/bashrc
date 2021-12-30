@@ -133,7 +133,7 @@ set -o vi
     # Sets shell to vi mode 
 
 #ALIASES#
-alias update='sudo dnf upgrade -y --refresh'
+alias update='sudo dnf upgrade -y --refresh && rustup update'
 alias ans-up='sudo ansible-pull -U https://github.com/godsmith99x/environment_setup.git -C fedora_laptop -v'
 alias nv='nvim'
 alias cleanup='sudo dnf autoremove -y; sudo dnf clean packages'
@@ -146,3 +146,4 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 export PYTHONSTARTUP=~/environment_setup/files/py_startup.py
 
+. "$HOME/.cargo/env"

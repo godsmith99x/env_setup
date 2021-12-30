@@ -127,7 +127,7 @@ set -o vi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ll='ls -alF'
-alias update='sudo dnf upgrade -y --refresh'
+alias update='sudo dnf upgrade -y --refresh && rustup update'
 alias nv='nvim'
 alias cleanup='sudo dnf autoremove -y; sudo dnf clean packages'
 alias nk='nohup kitty &>/dev/null'
