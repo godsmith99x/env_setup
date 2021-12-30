@@ -88,6 +88,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-surround'
 Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'rust-lang/rust.vim'
 call plug#end()
 
 " Plugin specific settings
