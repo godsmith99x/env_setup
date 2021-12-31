@@ -150,7 +150,7 @@
 
   - name: Copy zshrc file
     copy:
-      src: files/zshrc
+      src: files/zshrc/zshrc
       dest: /home/{{user_name}}/.zshrc
       owner: "{{user_name}}"
       group: "{{user_name}}"
@@ -233,3 +233,17 @@
   - name: Make rust-analyzer executable
     become: true
     command: chmod 751 /home/{{user_name}}/.local/bin/rust-analyzer
+
+  - name: Create .zfunc directory
+    file: 
+      path: /home/{{user_name}}/.zfunc
+      state: directory
+      owner: "{{user_name}}"
+      group: "{{user_name}}"
+
+  - name: Copy _rustup file
+    copy:
+      src: files/zshrc/_rustup
+      dest: /home/{{user_name}}/.zfunc/_rustup
+      owner: "{{user_name}}"
+      group: "{{user_name}}"
