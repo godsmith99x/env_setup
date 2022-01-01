@@ -248,34 +248,3 @@
       owner: "{{user_name}}"
       group: "{{user_name}}"
 
-  - name: Create Dracula gtk-theme directory
-    file: 
-      path: /home/{{user_name}}/.local/share/themes/gtk-master
-      state: directory
-      owner: "{{user_name}}"
-      group: "{{user_name}}"
-
-  - name: Copy Dracula gtk-theme files
-    copy:
-      src: "{{item}}"
-      dest: /home/{{user_name}}/.local/share/themes/gtk-master
-      owner: "{{user_name}}"
-      group: "{{user_name}}"
-    with_fileglob:
-      - files/gtk-master/*
-
-  - name: Create Dracula icon directory for inkscape
-    file: 
-      path: /home/{{user_name}}/.config/inkscape/icons/Dracula
-      state: directory
-      owner: "{{user_name}}"
-      group: "{{user_name}}"
-
-  - name: Copy Dracula icon files
-    copy:
-      src: "{{item}}"
-      dest: /home/{{user_name}}/.config/inkscape/icons/Dracula
-      owner: "{{user_name}}"
-      group: "{{user_name}}"
-    with_fileglob:
-      - files/DraculaIcons/*
