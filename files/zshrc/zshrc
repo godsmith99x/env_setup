@@ -131,6 +131,9 @@ alias update='sudo dnf upgrade -y --refresh && rustup update'
 alias nv='nvim'
 alias cleanup='sudo dnf autoremove -y; sudo dnf clean packages'
 alias nk='nohup kitty &>/dev/null'
+if [ -x "$(command -v kitty)" ]; then
+    alias ssh='kitty +kitten ssh';
+fi
 
 #Path updates
 export PATH="$HOME/.local/bin:$PATH"
