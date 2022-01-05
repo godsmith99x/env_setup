@@ -10,8 +10,9 @@ import os
 import subprocess
 
 print("-----------------Update and Install Ansible-----------------")
-subprocess.run(["sudo", "dnf", "upgrade", "--refresh", "-y"])
-subprocess.run(["sudo", "dnf", "install", "ansible", "-y"])
+subprocess.run(["sudo", "apt", "update"])
+subprocess.run(["sudo", "apt", "upgrade", "-y"])
+subprocess.run(["sudo", "apt", "install", "ansible", "-y"])
 
 
 print("-----------------Input info for gitconfig file-----------------")
@@ -27,7 +28,7 @@ with open(file_path, "w") as gitconfig:
 	gitconfig.write(f"[user]\n \tname = {git_name}\n \temail = {git_email}\n[init]\n\tdefaultBranch = main")
 
 print("-----------------Create ssh key for github-----------------")
-#subprocess.run(["git", "remote", "set-url", "origin", "git@github.com:godsmith99x/environment_setup.git"])
+subprocess.run(["git", "remote", "set-url", "origin", "git@github.com:godsmith99x/env_setup.git"])
 
 subprocess.run(["ssh-keygen", "-t", "ed25519", "-C", f"{git_email}"])
 subprocess.run(["ssh-agent", "-s"])
