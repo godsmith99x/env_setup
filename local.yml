@@ -12,7 +12,7 @@
   connection: local
   become: true
   vars:
-    user_name: {{ lookup('env', 'USER' }}
+    user_name: "{{ lookup('env', 'USER' }}"
 
   tasks:
   - name: Update all packages to their latest version
