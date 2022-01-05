@@ -7,7 +7,7 @@
 1. Clone this repo  
    `git clone https://github.com/godsmith99x/env_setup.git`
 1. Change into env_setup dir
-   `cd env_setup`
+   `cd env_setup`  
 1. Checkout the Ubuntu Sever branch
    `git checkout ubuntu_server`
 1. Execute bootstrap script  
