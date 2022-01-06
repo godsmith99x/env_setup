@@ -175,4 +175,4 @@
 
   - name: Restart ssh service
     become: true
-    command: systemctl restart ssh.service
+    command: systemctl restart sshd.service
