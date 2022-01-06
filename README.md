@@ -12,5 +12,6 @@
    `git checkout ubuntu_server`
 1. Execute bootstrap script  
    `~/env_setup/bootstrap.py`
+1. Change username in local.yml to appropriate value for server.
 1. Run asible-playbook to configure the localhost  
    `sudo ansible-playbook ~/env_setup/local.yml`
