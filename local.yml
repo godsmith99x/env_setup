@@ -29,6 +29,7 @@
         - autojump
         - yamllint
         - python3-pip
+        - fail2ban
 
   - name: Remove useless packages from the cache
     apt:
