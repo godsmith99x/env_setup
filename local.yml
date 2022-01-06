@@ -28,7 +28,8 @@
         - zsh
         - autojump
         - yamllint
-        - python3-pip 
+        - python3-pip
+        - nodejs
 
   - name: Remove useless packages from the cache
     apt:
@@ -161,3 +162,12 @@
     become_user: "{{user_name}}"
     command: chsh -s $(which zsh)
 
+  - name: Copy ssh secure config file
+    become: true
+    copy:
+      src: files/ssh/secure_ssh.conf
+      dest: /etc/ssh/sshd_config.d/secure_ssh.conf
+
+  - name: Restart ssh service
+    become: true
+    command: systemctl restart sshd
