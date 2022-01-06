@@ -29,11 +29,16 @@
         - autojump
         - yamllint
         - python3-pip
-        - nodejs
 
   - name: Remove useless packages from the cache
     apt:
       autoremove: yes
+
+
+  - name: Install nvm
+    become: true
+    become_user: "{{user_name}}"
+    command: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 
   - name: Create .local/share/nvim/site/autoload directory
     file: 
