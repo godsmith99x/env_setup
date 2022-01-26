@@ -42,6 +42,14 @@
         - python3-ansible-lint
         - neofetch
         - kitty
+        - zoxide
+        - ripgrep
+        - fd-find
+        - procs
+        - bat
+        - starship
+        - exa
+        - fzf
 
   - name: Remove useless packages from the cache
     dnf:
