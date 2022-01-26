@@ -50,6 +50,7 @@
         - starship
         - exa
         - fzf
+        - xclip
 
   - name: Remove useless packages from the cache
     dnf:
