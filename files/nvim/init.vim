@@ -91,6 +91,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'rust-lang/rust.vim'
 Plug 'puremourning/vimspector'
 Plug 'szw/vim-maximizer'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 call plug#end()
 
 " Install Termdebug
