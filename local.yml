@@ -126,6 +126,13 @@
       owner: "{{user_name}}"
       group: "{{user_name}}"
 
+  - name: Copy .tmux.conf.local file
+    copy:
+      src: files/.tmux.conf.local
+      dest: /home/{{user_name}}/.tmux.conf.local
+      owner: "{{user_name}}"
+      group: "{{user_name}}"
+
   - name: Run gsettings.sh 
     become: true
     become_user: "{{user_name}}"
