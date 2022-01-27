@@ -51,6 +51,7 @@
         - exa
         - fzf
         - xclip
+        - tealdeer
 
   - name: Remove useless packages from the cache
     dnf:
