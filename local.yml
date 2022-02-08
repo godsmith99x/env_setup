@@ -21,8 +21,8 @@
       state: latest
 
   - name: Install packages
-    dnf: 
-      pkg: 
+    dnf:
+      pkg:
         - neovim
         - tree
         - gnome-tweaks
@@ -34,7 +34,7 @@
         - yamllint
         - clang-tools-extra
         - docker-compose
-        - python3-pip 
+        - python3-pip
         - util-linux-user
         - gnome-shell-extension-pop-shell
         - clang
@@ -54,6 +54,9 @@
         - tealdeer
         - snapd
         - pipenv
+        - python3-flake8
+        - python3-pytest-flake8
+        - python3-pylint
 
   - name: Remove useless packages from the cache
     dnf:

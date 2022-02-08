@@ -77,11 +77,6 @@ Plug 'preservim/nerdtree' |
             \ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'preservim/nerdcommenter'
-    " <leader> cc to comment line or visual selection
-    " <leader> cn to comment line or visual selection
-    " <leader> c <space> toggles comment
-    " <leader> cu to uncomment line or visual selection
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -92,6 +87,9 @@ Plug 'rust-lang/rust.vim'
 Plug 'puremourning/vimspector'
 Plug 'szw/vim-maximizer'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'tpope/vim-commentary'
+    " gcc comments out line
+Plug 'dense-analysis/ale'
 call plug#end()
 
 " Install Termdebug
