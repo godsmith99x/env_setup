@@ -52,6 +52,8 @@
         - fzf
         - xclip
         - tealdeer
+        - snapd
+        - pipenv
 
   - name: Remove useless packages from the cache
     dnf:
