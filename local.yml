@@ -219,6 +219,13 @@
       repo: "https://github.com/zsh-users/zsh-syntax-highlighting"
       dest: "/home/{{user_name}}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
 
+  - name: Create .oh-my-zsh/custom/plugins/almostontop directory
+    file:
+      path: /home/{{user_name}}/.oh-my-zsh/custom/plugins/almostontop
+      state: directory
+      owner: "{{user_name}}"
+      group: "{{user_name}}"
+
   - name: Clone almostontop git repo
     become: true
     become_user: "{{user_name}}"
@@ -226,12 +233,26 @@
       repo: "https://github.com/Valiev/almostontop.git"
       dest: "/home/{{user_name}}/.oh-my-zsh/custom/plugins/almostontop"
 
+  - name: Create .oh-my-zsh/custom/plugins/zsh-autocomplete directory
+    file:
+      path: /home/{{user_name}}/.oh-my-zsh/custom/plugins/zsh-autocomplete
+      state: directory
+      owner: "{{user_name}}"
+      group: "{{user_name}}"
+
   - name: Clone zsh-autocomplete git repo
     become: true
     become_user: "{{user_name}}"
     ansible.builtin.git:
       repo: "https://github.com/marlonrichert/zsh-autocomplete.git"
       dest: "/home/{{user_name}}/.oh-my-zsh/custom/plugins/zsh-autocomplete"
+
+  - name: Create .oh-my-zsh/custom/plugins/autoupdate directory
+    file:
+      path: /home/{{user_name}}/.oh-my-zsh/custom/plugins/autoupdate
+      state: directory
+      owner: "{{user_name}}"
+      group: "{{user_name}}"
 
   - name: Clone autoupdate git repo
     become: true
