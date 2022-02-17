@@ -86,7 +86,7 @@ plugins=(
 	aliases
 	almostontop
 	autojump
-	zsh-autocomplete
+	#zsh-autocomplete
 	colored-man-pages
 	colorize
 	command-not-found
@@ -112,7 +112,7 @@ set -o vi
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-#   export EDITOR='mvim'
+#   export EDITOR='nvim'
 # fi
 
 # Compilation flags
