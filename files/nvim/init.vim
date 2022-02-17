@@ -135,7 +135,7 @@ nnoremap <leader>; g_a;<Esc>
 noremap <leader>gsh :0r ~/environment_setup/files/godsmith_header.txt
 
 " Scripts
- ----------------
+" ----------------
 autocmd BufEnter * silent! lcd %:p:h
     " automatically changes the working dir of the file open in the buffer
 
