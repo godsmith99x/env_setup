@@ -63,7 +63,7 @@
       autoremove: yes
 
   - name: Create .fonts directory
-    file: 
+    file:
       path: /home/{{user_name}}/.fonts
       state: directory
       owner: "{{user_name}}"
@@ -138,17 +138,17 @@
       owner: "{{user_name}}"
       group: "{{user_name}}"
 
-  - name: Run gsettings.sh 
+  - name: Run gsettings.sh
     become: true
     become_user: "{{user_name}}"
     command: /home/{{user_name}}/env_setup/gsettings.sh
 
-  - name: Run dnf_conf.sh 
+  - name: Run dnf_conf.sh
     become: true
     command: /home/{{user_name}}/env_setup/dnf_conf.sh
 
   - name: Create .oh-my-zsh_install directory
-    file: 
+    file:
       path: /home/{{user_name}}/.oh-my-zsh_install
       state: directory
       owner: "{{user_name}}"
@@ -157,13 +157,13 @@
   - name: Download oh-my-zsh install.sh
     become: true
     become_user: "{{user_name}}"
-    get_url: 
+    get_url:
       url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh 
       dest: /home/{{user_name}}/.oh-my-zsh_install/
 
   - name: Make oh-my-zsh install.sh executable
     become: true
-    command: chmod 751 /home/{{user_name}}/.oh-my-zsh_install/install.sh 
+    command: chmod 751 /home/{{user_name}}/.oh-my-zsh_install/install.sh
 
   - name: Install oh-my-zsh
     become: true
@@ -178,7 +178,7 @@
       group: "{{user_name}}"
 
   - name: Create .oh-my-zsh/custom/plugins/zsh-autosuggestions directory
-    file: 
+    file:
       path: /home/{{user_name}}/.oh-my-zsh/custom/plugins/zsh-autosuggestions
       state: directory
       owner: "{{user_name}}"
@@ -192,7 +192,7 @@
       dest: "/home/{{user_name}}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
 
   - name: Create .oh-my-zsh/custom/plugins/zsh-completions directory
-    file: 
+    file:
       path: /home/{{user_name}}/.oh-my-zsh/custom/plugins/zsh-completions
       state: directory
       owner: "{{user_name}}"
@@ -206,7 +206,7 @@
       dest: "/home/{{user_name}}/.oh-my-zsh/custom/plugins/zsh-completions"
 
   - name: Create .oh-my-zsh/custom/plugins/zsh-syntax-highlighting directory
-    file: 
+    file:
       path: /home/{{user_name}}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
       state: directory
       owner: "{{user_name}}"
@@ -233,6 +233,13 @@
       repo: "https://github.com/marlonrichert/zsh-autocomplete.git"
       dest: "/home/{{user_name}}/.oh-my-zsh/custom/plugins/zsh-autocomplete"
 
+  - name: Clone autoupdate git repo
+    become: true
+    become_user: "{{user_name}}"
+    ansible.builtin.git:
+      repo: "https://github.com/TamCore/autoupdate-oh-my-zsh-plugins.git"
+      dest: "/home/{{user_name}}/.oh-my-zsh/custom/plugins/autoupdate"
+
   - name: Change to zsh shell
     command: chsh -s $(which zsh)
 
@@ -243,7 +250,7 @@
     command: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
   - name: Create .local/bin directory
-    file: 
+    file:
       path: /home/{{user_name}}/.local/bin
       state: directory
       owner: "{{user_name}}"
@@ -251,13 +258,13 @@
 
   - name: Install rust-analyzer
     command: curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-linux -o ~/.local/bin/rust-analyzer
-    
+
   - name: Make rust-analyzer executable
     become: true
     command: chmod 751 /home/{{user_name}}/.local/bin/rust-analyzer
 
   - name: Create .zfunc directory
-    file: 
+    file:
       path: /home/{{user_name}}/.zfunc
       state: directory
       owner: "{{user_name}}"
