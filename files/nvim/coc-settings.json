@@ -19,5 +19,6 @@
       "initializationOptions": {},
       "settings": {}
     }
-  }
+  },
+  "svelte.enable-ts-plugin": true
 }
