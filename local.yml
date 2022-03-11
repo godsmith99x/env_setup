@@ -57,6 +57,7 @@
         - python3-flake8
         - python3-pytest-flake8
         - python3-pylint
+        - nextcloud
 
   - name: Remove useless packages from the cache
     dnf:
