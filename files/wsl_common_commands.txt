@@ -1,0 +1,5 @@
+# Install a new wsl distro
+wsl --import fedora $HOME\wsl\fedora $HOME\Downloads\fedora35-wsl.tar
+
+# Export an installed distro into a tarball
+wsl --export fedora $HOME\Downloads\fedora35-wsl.tar
