@@ -420,6 +420,9 @@ set -g @plugin 'dracula/tmux'
 # "$@"
 # # /!\ do not remove the previous line
 
+# Fixes tmux breaking neovim theme color in wsl
+set -g default-terminal "xterm-256color"
+set-option -ga terminal-overrides ",xterm-256color:Tc"
 
 # if run as 'tmux attach', creates a new session - if one does not already
 # exist
