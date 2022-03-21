@@ -25,10 +25,8 @@
       pkg:
         - neovim
         - tree
-        - gnome-tweaks
         - zsh
         - autojump
-        - deja-dup
         - nodejs
         - npm
         - yamllint
@@ -40,8 +38,6 @@
         - clang
         - clang-tools-extra
         - python3-ansible-lint
-        - neofetch
-        - kitty
         - zoxide
         - ripgrep
         - fd-find
@@ -57,43 +53,10 @@
         - python3-flake8
         - python3-pytest-flake8
         - python3-pylint
-        - nextcloud-client
 
   - name: Remove useless packages from the cache
     dnf:
       autoremove: yes
-
-  - name: Create .fonts directory
-    file:
-      path: /home/{{user_name}}/.fonts
-      state: directory
-      owner: "{{user_name}}"
-      group: "{{user_name}}"
-
-  - name: Copy font files
-    copy:
-      src: "{{item}}"
-      dest: /home/{{user_name}}/.fonts/
-      owner: "{{user_name}}"
-      group: "{{user_name}}"
-    with_fileglob:
-      - files/fonts/*
-
-  - name: Create kitty conf directory
-    file: 
-      path: /home/{{user_name}}/.config/kitty/
-      state: directory
-      owner: "{{user_name}}"
-      group: "{{user_name}}"
-
-  - name: Copy kitty conf files
-    copy:
-      src: "{{item}}"
-      dest: /home/{{user_name}}/.config/kitty/
-      owner: "{{user_name}}"
-      group: "{{user_name}}"
-    with_fileglob:
-      - files/kitty/*
 
   - name: Create .local/share/nvim/site/autoload directory
     file: 
@@ -138,11 +101,6 @@
       dest: /home/{{user_name}}/.tmux.conf.local
       owner: "{{user_name}}"
       group: "{{user_name}}"
-
-  - name: Run gsettings.sh
-    become: true
-    become_user: "{{user_name}}"
-    command: /home/{{user_name}}/env_setup/gsettings.sh
 
   - name: Run dnf_conf.sh
     become: true
