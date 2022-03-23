@@ -8,7 +8,7 @@
 # this file will load on python startup if the PYTHONSTARTUP 
 # environment variable is set to point to it. You can add this 
 # "export"  to the end of your .bashrc or .zshrc file for example.
-# export PYTHONSTARTUP=~/environment_setup/files/py_startup.py
+# export PYTHONSTARTUP=~/env_setup/files/py_startup.py
 # add tab completion
 try:
     import readline
