@@ -5,7 +5,7 @@
 ### (_Assumes starting from home dir in Fedora 35_)
 
 1. Clone this repo  
-   `git clone https://github.com/godsmith99x/env_setup.git`
+   `git clone --recursive https://github.com/godsmith99x/env_setup.git`
 1. Execute bootstrap script  
    `~/env_setup/bootstrap.py`
 1. Save ssh public key to github
