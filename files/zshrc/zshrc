@@ -149,3 +149,6 @@ eval "$(starship init zsh)"
 
 # Start Zoxide
 eval "$(zoxide init zsh)"
+
+# Enable autocomplete for kubectl
+source <(kubectl completion zsh)
