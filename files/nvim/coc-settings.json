@@ -21,5 +21,8 @@
       "settings": {}
     }
   },
-  "svelte.enable-ts-plugin": true
+  "svelte.enable-ts-plugin": true,
+  "yaml.schemas": {
+    "kubernetes": "/*.yaml"
+  }
 }
