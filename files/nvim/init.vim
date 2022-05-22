@@ -55,7 +55,7 @@ set shiftwidth=4
 set textwidth=79
 set expandtab
 set autoindent
-set nowrap
+set wrap
 set cmdheight=2
 
 " Web Dev Settings
@@ -97,6 +97,7 @@ Plug 'dense-analysis/ale'
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 " Install Termdebug
