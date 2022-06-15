@@ -161,3 +161,7 @@ if [[ -z "$XDG_RUNTIME_DIR" ]]; then
     fi
   fi
 fi
+
+# Auto add eca-eks.pem
+eval "$(ssh-agent -s)" >/dev/null 2>&1
+ssh-add ~/.ssh/eca-eks.pem >/dev/null 2>&1
