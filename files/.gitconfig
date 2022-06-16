@@ -1,0 +1,7 @@
+[user]
+ 	name = godsmith
+ 	email = jgodfrey-smith@pm.me
+[init]
+	defaultBranch = main
+[credential]
+	helper = cache --timeout=3600
