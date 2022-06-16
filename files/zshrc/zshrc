@@ -84,7 +84,7 @@ export UPDATE_ZSH_DAYS=1
 plugins=(
 	alias-finder
 	aliases
-	almostontop
+	# almostontop
 	autojump
     autoupdate
 	#zsh-autocomplete
