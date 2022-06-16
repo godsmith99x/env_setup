@@ -8,7 +8,8 @@
     "json",
     "javascriptreact",
     "typescript.tsx",
-    "rust"
+    "rust",
+    "golang"
   ],
 
   "languageserver": {
