@@ -10,7 +10,7 @@
 
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin/:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/godsmith/.oh-my-zsh"
@@ -84,7 +84,7 @@ export UPDATE_ZSH_DAYS=1
 plugins=(
 	alias-finder
 	aliases
-	# almostontop
+	almostontop
 	autojump
     autoupdate
 	#zsh-autocomplete
@@ -142,26 +142,16 @@ export PATH="$HOME/.local/bin:$PATH"
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-export PYTHONSTARTUP=~/env_setup/files/py_startup.py
-export PATH="$HOME/.poetry/bin:$PATH"
+export PYTHONSTARTUP=~/environment_setup/files/py_startup.py
+
 # Start Starship prompt
 eval "$(starship init zsh)"
 
 # Start Zoxide
 eval "$(zoxide init zsh)"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# Add temp file dir for podman to work on wsl2
-if [[ -z "$XDG_RUNTIME_DIR" ]]; then
-  export XDG_RUNTIME_DIR=/run/user/$UID
-  if [[ ! -d "$XDG_RUNTIME_DIR" ]]; then
-    export XDG_RUNTIME_DIR=/tmp/$USER-runtime
-    if [[ ! -d "$XDG_RUNTIME_DIR" ]]; then
-      mkdir -m 0700 "$XDG_RUNTIME_DIR"
-    fi
-  fi
-fi
+# Enable autocomplete for kubectl
+source <(kubectl completion zsh)
 
-# Auto add eca-eks.pem
-eval "$(ssh-agent -s)" >/dev/null 2>&1
-ssh-add ~/.ssh/eca-eks.pem >/dev/null 2>&1
+export PATH="$HOME/.poetry/bin:$PATH"
+export PATH="$HOME/.go/bin:$PATH"
