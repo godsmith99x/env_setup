@@ -1,0 +1,40 @@
+Re|Result|rust-analyzer
+O|Ok(…)|rust-analyzer
+|new|rust-analyzer
+s|stdout|rust-client
+C|CrosstermBackend|rust-client
+stdout|stdout|rust-client
+Result|Result<_, _>|rust-analyzer
+e|effective_ex_rate|pyright
+e|else|pyright
+Tr|True|pyright
+ng|nginx|around
+im|image|yaml
+container|containers|around
+spe|spec|yaml
+la|labels|yaml
+na|name|yaml
+me|metadata|yaml
+Pod|Pod|yaml
+apiVersion|apiVersion|yaml
+yam|yaml|around
+autocompl|autocomplete|around
+sc|sc|emmet-html
+"s|"start": "$1"|json
+ty|type|html
+P|import Phaser$1 from "phaser";|tsserver-typescript
+inn|innerWidth|html
+nu|number|rust-client
+new|new|around
+n|new|around
+e|else|rust-analyzer
+un|unwrap|rust-analyzer
+bu|build|around
+bu|builder|around
+bui|build|around
+ap|app|around
+gt|gtk|around
+App|Application|around
+gtk|gtk4|around
+pac|package|around
+ver|version|around
