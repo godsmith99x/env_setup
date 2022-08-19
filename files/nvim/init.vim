@@ -98,7 +98,6 @@ Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'tpope/vim-fugitive'
-# Inside the Vim-Plug block on your .vimrc
 Plug 'ekalinin/Dockerfile.vim'
 call plug#end()
 
