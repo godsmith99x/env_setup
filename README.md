@@ -2,7 +2,8 @@
 
 ## Steps
 
-### (_Assumes starting from home dir in Fedora 35_)
+### (_Assumes starting from home dir in popOS 22.04_)
+
 
 1. Clone this repo  
    `git clone --recursive https://github.com/godsmith99x/env_setup.git`

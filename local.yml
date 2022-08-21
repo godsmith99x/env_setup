@@ -21,46 +21,26 @@
       state: latest
 
   - name: Install packages
-    dnf:
+    apt:
       pkg:
-        - neovim
-        - tree
-        - gnome-tweaks
-        - zsh
         - autojump
-        - deja-dup
-        - nodejs
-        - npm
-        - yamllint
-        - clang-tools-extra
-        - docker-compose
-        - python3-pip
-        - util-linux-user
-        - gnome-shell-extension-pop-shell
-        - clang
-        - clang-tools-extra
-        - python3-ansible-lint
-        - neofetch
-        - kitty
-        - zoxide
-        - ripgrep
-        - fd-find
-        - procs
         - bat
-        - starship
+        - deja-dup
         - exa
         - fzf
-        - xclip
-        - tealdeer
+        - kitty
+        - neovim
+        - npm
+        - python3-pip
+        - ripgrep
         - snapd
-        - pipenv
-        - python3-flake8
-        - python3-pytest-flake8
-        - python3-pylint
-        - nextcloud-client
+        - tmux
+        - tree
+        - zoxide
+        - zsh
 
   - name: Remove useless packages from the cache
-    dnf:
+    apt:
       autoremove: yes
 
   - name: Create .fonts directory
@@ -150,10 +130,6 @@
     become: true
     become_user: "{{user_name}}"
     command: /home/{{user_name}}/env_setup/gsettings.sh
-
-  - name: Run dnf_conf.sh
-    become: true
-    command: /home/{{user_name}}/env_setup/dnf_conf.sh
 
   - name: Create .oh-my-zsh_install directory
     file:
