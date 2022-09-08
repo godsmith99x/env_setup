@@ -8,16 +8,15 @@
 
 import os
 import subprocess
-import glob
 
-print("-----------------Update and Install Flatpak-----------------")
 def report_os():
-    path = "/etc/*release"
-    
-    try:
-        for file in glob.iglob(path, recursive=True):
-        print(file)
-        
+    uname = "Fedora"#os.uname()
+    if uname.version.find("Ubuntu") > 0:
+        print("Ubuntu")
+    elif uname.version.find("Fedora") > 0:
+        print("Fedora")
+    else:
+        print(f"Uknown OS: {uname}")   
 # subprocess.run(["sudo", "apt", "upgrade", "&&", "sudo", "apt", "install", "-y"])
 # subprocess.run(["sudo", "apt", "install", "ansible", "-y"])
 
