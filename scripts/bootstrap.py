@@ -8,32 +8,38 @@
 
 import os
 import subprocess
+import glob
 
-print("-----------------Update and Install Ansible-----------------")
-subprocess.run(["sudo", "dnf", "upgrade", "--refresh", "-y"])
-subprocess.run(["sudo", "dnf", "install", "ansible", "-y"])
+print("-----------------Update and Install Flatpak-----------------")
+def report_os():
+    path = "/etc/*release"
+    
+    try:
+        for file in glob.iglob(path, recursive=True):
+        print(file)
+        
+# subprocess.run(["sudo", "apt", "upgrade", "&&", "sudo", "apt", "install", "-y"])
+# subprocess.run(["sudo", "apt", "install", "ansible", "-y"])
 
 
-print("-----------------Input info for gitconfig file-----------------")
-user_name = os.getenv('USER')
-home_dir = f"/home/{user_name}/"
-file_name = ".gitconfig"
-file_path = os.path.join(home_dir, file_name)
+# print("-----------------Input info for gitconfig file-----------------")
+# user_name = os.getenv('USER')
+# home_dir = f"/home/{user_name}/"
+# file_name = ".gitconfig"
+# file_path = os.path.join(home_dir, file_name)
 
-git_name = input("Enter the name you would like to use for git: ")
-git_email = input("Enter the email you would like to use for git: ")
+# git_name = input("Enter the name you would like to use for git: ")
+# git_email = input("Enter the email you would like to use for git: ")
 
-with open(file_path, "w") as gitconfig:
-	gitconfig.write(f"[user]\n \tname = {git_name}\n \temail = {git_email}\n[init]\n\tdefaultBranch = main")
+# with open(file_path, "w") as gitconfig:
+# 	gitconfig.write(f"[user]\n \tname = {git_name}\n \temail = {git_email}\n[init]\n\tdefaultBranch = main") print("-----------------Create ssh key for github-----------------")
+# #subprocess.run(["git", "remote", "set-url", "origin", "git@github.com:godsmith99x/environment_setup.git"])
 
-print("-----------------Create ssh key for github-----------------")
-#subprocess.run(["git", "remote", "set-url", "origin", "git@github.com:godsmith99x/environment_setup.git"])
+# subprocess.run(["ssh-keygen", "-t", "ed25519", "-C", f"{git_email}"])
+# subprocess.run(["ssh-agent", "-s"])
+# subprocess.run(["ssh-add", f"/home/{user_name}/.ssh/id_ed25519"])
+# print("-----------------Done-----------------")
 
-subprocess.run(["ssh-keygen", "-t", "ed25519", "-C", f"{git_email}"])
-subprocess.run(["ssh-agent", "-s"])
-subprocess.run(["ssh-add", f"/home/{user_name}/.ssh/id_ed25519"])
-print("-----------------Done-----------------")
-
-print("-----------------Create gpg key for github-----------------")
-subprocess.run(["gpg", "--full-generate-key"])
-print("-----------------Done-----------------")
+# print("-----------------Create gpg key for github-----------------")
+# subprocess.run(["gpg", "--full-generate-key"])
+# print("-----------------Done-----------------")
