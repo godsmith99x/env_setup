@@ -1,0 +1,5 @@
+- [ ] Install poetry
+    - [ ] Configure poetry for virtualenvs.in-project = True
+- [ ] Install flatpak
+- [ ] Install snap
+- [ ] update system packages
