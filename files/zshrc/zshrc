@@ -136,14 +136,21 @@ alias nk='nohup kitty &>/dev/null'
 if [[ $TERM == "xterm-kitty" ]]; then
     alias ssh='kitty +kitten ssh';
 fi
+alias jn='jupyter notebook'
 # Path updates
 export PATH="$HOME/.local/bin:$PATH"
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
+<<<<<<< HEAD
 export PYTHONSTARTUP=~/environment_setup/files/py_startup.py
 
+=======
+export PYTHONSTARTUP=~/env_setup/files/py_startup.py
+export PATH="$HOME/.poetry/bin:$PATH"
+export PATH="$HOME/.emacs.d/bin:$PATH"
+>>>>>>> 10fa69e (Added doom bin to path)
 # Start Starship prompt
 eval "$(starship init zsh)"
 
